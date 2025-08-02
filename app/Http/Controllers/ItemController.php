@@ -10,7 +10,8 @@ class ItemController extends Controller
     //
     public function index()
     {
-        return view('items.index');
+        $items = Item::all();
+        return view('items.index', ['items' => $items]);
     }
 
     public function create()
@@ -23,12 +24,13 @@ class ItemController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'quantity' => 'required|integer',
-            'price' => 'required|decimal:2',
+            'price' => 'required|decimal:0,2',
             'description' => 'nullable'
         ]);
 
         Item::create($data);
         return redirect(route('item.index'))->with('success', 'Item created Successfully');
     }
+    
 
 }

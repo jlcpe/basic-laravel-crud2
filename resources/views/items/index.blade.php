@@ -11,6 +11,27 @@
     <div>
         <a href="{{route('item.create')}}">Create an Item</a>
     </div>
-    <div>Index page</div>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Item Quantity</th>
+                <th>Item Price</th>
+                <th>Item Description</th>
+            </tr>
+            @foreach($items as $item)
+            <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->quantity}}</td>
+                <td>{{$item->price}}</td>
+                <td>{{$item->description}}</td>
+            </tr>
+            @endforeach
+
+        </table>
+    </div>
+
 </body>
 </html>
