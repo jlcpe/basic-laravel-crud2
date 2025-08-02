@@ -9,6 +9,11 @@
 <body>
     <h1>Items Page</h1>
     <div>
+        @if(session()->has('success'))
+            <p>{{session('success')}}</p>
+        @endif
+    </div>
+    <div>
         <a href="{{route('item.create')}}">Create an Item</a>
     </div>
     <div>
@@ -19,6 +24,7 @@
                 <th>Item Quantity</th>
                 <th>Item Price</th>
                 <th>Item Description</th>
+                <th>Action</th>
             </tr>
             @foreach($items as $item)
             <tr>
@@ -27,6 +33,12 @@
                 <td>{{$item->quantity}}</td>
                 <td>{{$item->price}}</td>
                 <td>{{$item->description}}</td>
+                <td>
+                    <a href="{{route('item.edit', ['item' => $item])}}">Edit</a>
+                    <form action="">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
             </tr>
             @endforeach
 

@@ -29,7 +29,25 @@ class ItemController extends Controller
         ]);
 
         Item::create($data);
-        return redirect(route('item.index'))->with('success', 'Item created Successfully');
+        return redirect(route('item.index'))->with('success', 'Item Created Successfully');
+    }
+
+    public function edit(Item $item)
+    {
+        return view('items.edit', ['item' => $item]);
+    }
+
+    public function update(Request $request, Item $item)
+    {
+        $data = $request->validate([
+            'name' => 'required|string',
+            'quantity' => 'required|integer',
+            'price' => 'required|decimal:0,2',
+            'description' => 'nullable'
+        ]);
+
+        $item->update($data);
+        return redirect(route('item.index'))->with('success', 'Item Updated Successfully');
     }
     
 
