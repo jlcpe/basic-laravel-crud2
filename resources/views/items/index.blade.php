@@ -35,7 +35,9 @@
                 <td>{{$item->description}}</td>
                 <td>
                     <a href="{{route('item.edit', ['item' => $item])}}">Edit</a>
-                    <form action="">
+                    <form action="{{route('item.destroy', ['item' => $item])}}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
                         <input type="submit" value="Delete">
                     </form>
                 </td>

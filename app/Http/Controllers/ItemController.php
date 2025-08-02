@@ -49,6 +49,12 @@ class ItemController extends Controller
         $item->update($data);
         return redirect(route('item.index'))->with('success', 'Item Updated Successfully');
     }
+
+    public function destroy(Item $item)
+    {
+        $item->delete();
+        return redirect(route('item.index'))->with('success', 'Item Deleted Successfully');
+    }
     
 
 }
